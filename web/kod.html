@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detektív Játék - Telepítési Útmutató</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .step h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .code-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5a67d8;
+        }
+
+        .copy-btn.copied {
+            background: #48bb78;
+        }
+
+        .download-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: #38a169;
+        }
+
+        .warning {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .info {
+            background: #bee3f8;
+            border: 1px solid #63b3ed;
+            color: #2c5282;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🕵️ Detektív Játék</h1>
+            <p>Interaktív nyomozási játék - Telepítési útmutató és SQL kód</p>
+        </header>
+
+        <div class="card">
+            <h2>📋 Játék Leírása</h2>
+            <p>Ez egy interaktív detektív játék, ahol a játékosnak egy csoport tagjai közül kell megtalálnia a gyilkost. A játék különböző nyomokat, kikérdezéseket és kapcsolatokat tartalmaz, amelyek segítségével a játékos következtetéseket vonhat le.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>🔍 Gyanúsítottak</h4>
+                    <p>Részletes profilok személyes adatokkal, pénzügyi helyzettel és gyanúsítási szinttel</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💬 Kikérdezések</h4>
+                    <p>Detektívek által készített vallomások hitelessági pontszámokkal</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🤝 Kapcsolatok</h4>
+                    <p>Tagok közötti viszonyok és bizalmi szintek elemzése</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📊 Elemzések</h4>
+                    <p>Automatikus gyanúsítási elemzések és ellentmondások feltárása</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🗄️ SQL Adatbázis Kód</h2>
+            <p>Másold ki az alábbi SQL kódot és futtasd le a MySQL adatbázisodban:</p>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('sql-code')">Másolás</button>
+                <pre class="code-block" id="sql-code">-- Detektív Játék Adatbázis
+-- Adatbázis létrehozása
+CREATE DATABASE detectiveGame DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+
+USE detectiveGame;
+
+-- Tagok táblája
+CREATE TABLE group_members (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    height INT,
+    hair_color VARCHAR(50),
+    eye_color VARCHAR(50),
+    occupation VARCHAR(100),
+    years_in_group INT,
+    hometown VARCHAR(100),
+    has_access_to_secrets BOOLEAN DEFAULT FALSE,
+    financial_status ENUM('poor', 'middle', 'wealthy'),
+    personality_trait VARCHAR(100)
+);
+
+-- Detektívek táblája
+CREATE TABLE detectives (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    years_experience INT,
+    birth_year INT,
+    specialization VARCHAR(100),
+    success_rate DECIMAL(5,2),
+    agency VARCHAR(100)
+);
+
+-- Kikérdezések táblája
+CREATE TABLE interrogations (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    detective_id INT,
+    member_id INT,
+    statement TEXT,
+    statement_type ENUM('accusation', 'suspicion', 'observation', 'defense', 'alibi'),
+    credibility_score INT CHECK (credibility_score BETWEEN 1 AND 10),
+    interrogation_date DATE,
+    FOREIGN KEY (detective_id) REFERENCES detectives(id),
+    FOREIGN KEY (member_id) REFERENCES group_members(id)
+);
+
+-- Kapcsolatok táblája
+CREATE TABLE member_relationships (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    member_id INT,
+    target_member_id INT,
+    relationship_type ENUM('friend', 'enemy', 'neutral', 'suspicious'),
+    trust_level INT CHECK (trust_level BETWEEN 1 AND 10),
+    FOREIGN KEY (member_id) REFERENCES group_members(id),
+    FOREIGN KEY (target_member_id) REFERENCES group_members(id)
+);
+
+-- Minta adatok beszúrása
+INSERT INTO group_members (name, age, height, hair_color, eye_color, occupation, years_in_group, hometown, has_access_to_secrets, financial_status, personality_trait) VALUES
+('Kovács János', 45, 175, 'barna', 'kék', 'Könyvelő', 8, 'Budapest', TRUE, 'middle', 'Megbízható, precíz'),
+('Nagy Mária', 38, 162, 'szőke', 'zöld', 'Marketing vezető', 5, 'Debrecen', TRUE, 'wealthy', 'Ambiciózus, határozott'),
+('Szabó Péter', 52, 180, 'ősz', 'barna', 'IT szakértő', 12, 'Szeged', TRUE, 'poor', 'Introvertált, titokzatos'),
+('Horváth Gábor', 41, 178, 'fekete', 'barna', 'Ügyvezető', 12, 'Pécs', TRUE, 'wealthy', 'Manipulatív, hataloméhes'),
+('Molnár Zsuzsanna', 29, 168, 'vörös', 'kék', 'Értékesítő', 3, 'Győr', FALSE, 'middle', 'Társaságkedvelő, beszédes'),
+('Kiss Éva', 33, 165, 'barna', 'barna', 'Asszisztens', 6, 'Miskolc', FALSE, 'poor', 'Csendes, megfigyelő'),
+('Varga László', 47, 183, 'szürke', 'kék', 'Biztonsági vezető', 9, 'Kecskemét', TRUE, 'middle', 'Óvatos, gyanakodó'),
+('Papp Ildikó', 36, 170, 'szőke', 'zöld', 'HR vezető', 7, 'Nyíregyháza', TRUE, 'wealthy', 'Diplomatikus, elemző');
+
+INSERT INTO detectives (name, years_experience, birth_year, specialization, success_rate, agency) VALUES
+('Balogh Tamás', 15, 1978, 'Gazdasági bűncselekmények', 87.50, 'Budapesti Rendőr-főkapitányság'),
+('Farkas Andrea', 12, 1981, 'Személyi biztonság', 92.30, 'Magánnyomozó iroda'),
+('Tóth Zoltán', 20, 1973, 'Belső vizsgálatok', 89.10, 'Vállalati biztonsági osztály');
+
+INSERT INTO interrogations (detective_id, member_id, statement, statement_type, credibility_score, interrogation_date) VALUES
+(1, 1, 'Pénteken este 8-kor még az irodában voltam, a könyvelést fejeztem be. Szabó Péter is ott volt.', 'observation', 8, '2024-01-15'),
+(1, 2, 'Horváth Gábor az utóbbi hetekben furcsán viselkedett, titokzatos telefonokat fogadott.', 'suspicion', 7, '2024-01-15'),
+(2, 3, 'Igen, korábban mentem el, de csak azért, mert családi programom volt.', 'defense', 5, '2024-01-16'),
+(2, 4, 'A cég érdekében mindig mindent megteszek. Ha valaki árul, az nem én vagyok.', 'defense', 4, '2024-01-16'),
+(3, 5, 'A múlt héten láttam Molnár Zsuzsannát egy ismeretlen férfival beszélgetni a parkolóban.', 'observation', 6, '2024-01-17'),
+(3, 6, 'Nem értek ezekhez a bonyolult ügyekhez, csak az asszisztensi munkámat végzem.', 'defense', 9, '2024-01-17'),
+(1, 7, 'Horváth Gábor hozzáférése van minden rendszerhez, és mostanában gyanús leveleket írt.', 'accusation', 9, '2024-01-18'),
+(2, 8, 'Észrevettem, hogy Horváth Gábor ismeretlen címekkel levelezett a múlt hónapban.', 'suspicion', 7, '2024-01-18');
+
+INSERT INTO member_relationships (member_id, target_member_id, relationship_type, trust_level) VALUES
+(1, 3, 'friend', 8),
+(2, 4, 'enemy', 3),
+(3, 4, 'neutral', 5),
+(4, 1, 'neutral', 6),
+(5, 6, 'friend', 9),
+(6, 5, 'friend', 9),
+(7, 4, 'suspicious', 3),
+(8, 4, 'suspicious', 4),
+(1, 2, 'friend', 7),
+(2, 1, 'friend', 7),
+(3, 1, 'friend', 8),
+(4, 2, 'enemy', 2),
+(4, 7, 'neutral', 4),
+(5, 1, 'neutral', 6),
+(6, 1, 'friend', 8),
+(7, 1, 'friend', 7),
+(8, 1, 'neutral', 6),
+(8, 2, 'friend', 8);
+
+-- Hasznos lekérdezések a játékhoz
+
+-- 1. Gyanúsítottak listája gyanúsítási szinttel
+SELECT 
+    name AS név,
+    age AS kor,
+    occupation AS beosztás,
+    years_in_group AS évek_a_csoportban,
+    has_access_to_secrets AS titkokhoz_hozzáférés,
+    financial_status AS pénzügyi_helyzet,
+    personality_trait AS személyiségjegy,
+    CASE 
+        WHEN has_access_to_secrets = TRUE AND financial_status = 'poor' THEN 'NAGYON GYANÚS'
+        WHEN has_access_to_secrets = TRUE AND financial_status = 'middle' THEN 'GYANÚS'
+        WHEN has_access_to_secrets = TRUE AND financial_status = 'wealthy' THEN 'KÖZEPESEN GYANÚS'
+        ELSE 'KEVÉSBÉ GYANÚS'
+    END AS gyanú_szint
+FROM group_members 
+ORDER BY has_access_to_secrets DESC, FIELD(financial_status, 'poor', 'middle', 'wealthy');
+
+-- 2. Kikérdezések részletesen
+SELECT 
+    gm.name AS kikérdezett_neve,
+    d.name AS detektív_neve,
+    i.statement AS állítás,
+    i.statement_type AS állítás_típusa,
+    i.credibility_score AS hitelesség,
+    i.interrogation_date AS kikérdezés_dátuma
+FROM interrogations i 
+JOIN group_members gm ON i.member_id = gm.id 
+JOIN detectives d ON i.detective_id = d.id 
+ORDER BY i.interrogation_date, gm.name;
+
+-- 3. Kapcsolatok elemzése
+SELECT 
+    gm1.name AS név,
+    gm2.name AS cél_tag_neve,
+    mr.relationship_type AS kapcsolat_típusa,
+    mr.trust_level AS bizalmi_szint
+FROM member_relationships mr
+JOIN group_members gm1 ON mr.member_id = gm1.id
+JOIN group_members gm2 ON mr.target_member_id = gm2.id
+ORDER BY gm1.name;
+
+-- 4. Leggyanakvóbb személyek
+SELECT 
+    gm.name AS név,
+    COUNT(mr.target_member_id) AS gyanúsítások_száma,
+    ROUND(AVG(mr.trust_level), 1) AS átlagos_bizalmi_szint
+FROM group_members gm 
+LEFT JOIN member_relationships mr ON gm.id = mr.target_member_id 
+WHERE mr.relationship_type IN ('enemy', 'suspicious') OR mr.trust_level <= 5 
+GROUP BY gm.id, gm.name 
+HAVING COUNT(mr.target_member_id) > 0 
+ORDER BY COUNT(mr.target_member_id) DESC, AVG(mr.trust_level) ASC;
+
+-- MEGOLDÁS: HORVÁTH GÁBOR A GYILKOS!
+-- Indokok:
+-- 1. Ügyvezető pozíció - teljes hozzáférés a titkokhoz
+-- 2. Manipulatív személyiség - hataloméhes
+-- 3. Legalacsonyabb védelem hitelessége (4/10)
+-- 4. Többen gyanakszanak rá (Nagy Mária, Varga László, Papp Ildikó)
+-- 5. Ellenséges viszony Nagy Máriával (3/10 bizalom)
+-- 6. Gyanús viselkedés: titokzatos telefonok, ismeretlen levelezés</pre>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="download-btn" onclick="downloadSQL()">📥 SQL fájl letöltése</button>
+            </div>
+
+            <div class="info">
+                <strong>💡 Használat:</strong> Másold ki a kódot vagy töltsd le fájlként, majd futtasd le MySQL adatbázisodban. Ez létrehozza a teljes játék adatbázist mintaadatokkal együtt.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🚀 Telepítési Útmutató</h2>
+            
+            <div class="step">
+                <h3>1. lépés: Szerver környezet</h3>
+                <p>Szükséges komponensek:</p>
+                <ul>
+                    <li>Apache/Nginx webszerver</li>
+                    <li>PHP 7.4 vagy újabb</li>
+                    <li>MySQL 5.7 vagy újabb</li>
+                    <li>XAMPP, WAMP vagy hasonló fejlesztői környezet</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>2. lépés: Adatbázis létrehozása</h3>
+                <p>Futtasd le a fenti SQL kódot a MySQL adatbázisodban. Ez létrehozza:</p>
+                <ul>
+                    <li>A <code>detectiveGame</code> adatbázist</li>
+                    <li>4 táblát (group_members, detectives, interrogations, member_relationships)</li>
+                    <li>Mintaadatokat a játékhoz</li>
+                    <li>Hasznos lekérdezéseket</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>3. lépés: Játék logika</h3>
+                <p>A játék célja megtalálni a gyilkost a következő nyomok alapján:</p>
+                <ul>
+                    <li><strong>Gyanúsítottak:</strong> Elemezd a személyes adatokat és gyanúsítási szinteket</li>
+                    <li><strong>Kikérdezések:</strong> Figyeld a vallomások hitelességét</li>
+                    <li><strong>Kapcsolatok:</strong> Vizsgáld a bizalmi szinteket</li>
+                    <li><strong>Ellentmondások:</strong> Keresd az inkonzisztenciákat</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>🎯 Megoldás:</strong> A gyilkos <strong>Horváth Gábor</strong>! Ügyvezető pozíciója, manipulatív személyisége, alacsony védelem hitelessége (4/10) és a többszörös gyanúsítások mind rá mutatnak.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎮 Játék Funkciók</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>🔍 Gyanúsítottak elemzése</h4>
+                    <p>8 gyanúsított részletes profilokkal, automatikus gyanúsítási szint számítással</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💬 Vallomások értékelése</h4>
+                    <p>8 kikérdezés 3 detektívtől, hitelessági pontszámokkal (1-10)</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🤝 Kapcsolatok térképe</h4>
+                    <p>18 kapcsolat a tagok között bizalmi szintekkel és viszony típusokkal</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📊 Automatikus elemzések</h4>
+                    <p>SQL lekérdezések a leggyanakvóbb személyek és ellentmondások feltárására</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔧 Hibaelhárítás</h2>
+            
+            <div class="step">
+                <h3>Gyakori problémák:</h3>
+                <ul>
+                    <li><strong>Karakterkódolási hiba:</strong> Győződj meg róla, hogy UTF-8 karakterkódolást használsz</li>
+                    <li><strong>Adatbázis kapcsolódási hiba:</strong> Ellenőrizd a MySQL szerver futását</li>
+                    <li><strong>Táblák nem jönnek létre:</strong> Ellenőrizd a felhasználói jogosultságokat</li>
+                    <li><strong>Mintaadatok hiányoznak:</strong> Futtasd le az INSERT utasításokat is</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <strong>📞 Támogatás:</strong> Ha problémába ütközöl, ellenőrizd a MySQL hibanaplót és győződj meg róla, hogy minden SQL utasítás sikeresen lefutott.
+            </div>
+            <div class="vissza"><a href="index.html">Vissza a főoldalra</a></div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                const btn = element.parentElement.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Másolva!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {    
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const btn = element.parentElement.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Másolva!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function downloadSQL() {
+            const sqlContent = document.getElementById('sql-code').textContent;
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(sqlContent));
+            element.setAttribute('download', 'detective_game_database.sql');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</body>
+</html>
