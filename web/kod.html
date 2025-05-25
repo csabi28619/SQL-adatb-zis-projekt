@@ -4,187 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detektív Játék - Telepítési Útmutató</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .step {
-            background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .step h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .code-container {
-            position: relative;
-            margin: 20px 0;
-        }
-
-        .code-block {
-            background: #2d3748;
-            color: #e2e8f0;
-            padding: 20px;
-            border-radius: 10px;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.4;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: background 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: #5a67d8;
-        }
-
-        .copy-btn.copied {
-            background: #48bb78;
-        }
-
-        .download-btn {
-            background: #48bb78;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px 5px;
-            transition: background 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .download-btn:hover {
-            background: #38a169;
-        }
-
-        .warning {
-            background: #fed7d7;
-            border: 1px solid #fc8181;
-            color: #c53030;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        .info {
-            background: #bee3f8;
-            border: 1px solid #63b3ed;
-            color: #2c5282;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .feature-item {
-            background: #f7fafc;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .feature-item h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="kod.css">
 </head>
 <body>
     <div class="container">
@@ -380,16 +200,7 @@ LEFT JOIN member_relationships mr ON gm.id = mr.target_member_id
 WHERE mr.relationship_type IN ('enemy', 'suspicious') OR mr.trust_level <= 5 
 GROUP BY gm.id, gm.name 
 HAVING COUNT(mr.target_member_id) > 0 
-ORDER BY COUNT(mr.target_member_id) DESC, AVG(mr.trust_level) ASC;
-
--- MEGOLDÁS: HORVÁTH GÁBOR A GYILKOS!
--- Indokok:
--- 1. Ügyvezető pozíció - teljes hozzáférés a titkokhoz
--- 2. Manipulatív személyiség - hataloméhes
--- 3. Legalacsonyabb védelem hitelessége (4/10)
--- 4. Többen gyanakszanak rá (Nagy Mária, Varga László, Papp Ildikó)
--- 5. Ellenséges viszony Nagy Máriával (3/10 bizalom)
--- 6. Gyanús viselkedés: titokzatos telefonok, ismeretlen levelezés</pre>
+ORDER BY COUNT(mr.target_member_id) DESC, AVG(mr.trust_level) ASC;</pre>
             </div>
             
             <div style="text-align: center; margin: 20px 0;">
@@ -436,10 +247,6 @@ ORDER BY COUNT(mr.target_member_id) DESC, AVG(mr.trust_level) ASC;
                     <li><strong>Ellentmondások:</strong> Keresd az inkonzisztenciákat</li>
                 </ul>
             </div>
-
-            <div class="warning">
-                <strong>🎯 Megoldás:</strong> A gyilkos <strong>Horváth Gábor</strong>! Ügyvezető pozíciója, manipulatív személyisége, alacsony védelem hitelessége (4/10) és a többszörös gyanúsítások mind rá mutatnak.
-            </div>
         </div>
 
         <div class="card">
@@ -466,6 +273,65 @@ ORDER BY COUNT(mr.target_member_id) DESC, AVG(mr.trust_level) ASC;
         </div>
 
         <div class="card">
+            <h2>⚠️ SPOILER FIGYELMEZTETÉS!</h2>
+            <div class="spoiler-warning">
+                🚨 FIGYELEM! Az alábbi rész tartalmazza a játék megoldását! 🚨<br>
+                Csak akkor nézd meg, ha már megoldottad a rejtélyt, vagy segítségre van szükséged!
+            </div>
+            
+            <div class="spoiler-section">
+                <div class="spoiler-overlay" id="spoiler-overlay" onclick="revealSolution()">
+                    <div style="font-size: 3em; margin-bottom: 20px;">🔒</div>
+                    <div style="font-size: 1.5em; margin-bottom: 10px;">MEGOLDÁS ELREJTVE</div>
+                    <div style="font-size: 1em; margin-bottom: 20px;">Kattints ide a felfedéshez</div>
+                    <button class="reveal-btn">🔓 Megoldás felfedése</button>
+                </div>
+                
+                <div class="spoiler-content" id="spoiler-content">-- MEGOLDÁS: HORVÁTH GÁBOR A GYILKOS!
+
+-- Bizonyítékok és indokok:
+
+-- 1. MOTÍVUM ÉS LEHETŐSÉG:
+-- - Ügyvezető pozíció - teljes hozzáférés minden titkos információhoz
+-- - 12 éve a csoportban - ismeri az összes belső folyamatot
+-- - Manipulatív és hataloméhes személyiség
+-- - Gazdag pénzügyi helyzet, de vágyik még több hatalomra
+
+-- 2. VALLOMÁSOK HITELESSÉGE:
+-- - Saját védekezése csak 4/10 hitelesség - ez a legalacsonyabb!
+-- - Ellene szóló vádak átlagosan 8/10 hitelesség
+-- - Nagy különbség a védelem és vádak hitelessége között
+
+-- 3. TÖBBSZÖRÖS GYANÚSÍTÁS:
+-- - Nagy Mária (marketing vezető): "furcsán viselkedett, titokzatos telefonok"
+-- - Varga László (biztonsági vezető): "gyanús leveleket írt"
+-- - Papp Ildikó (HR vezető): "ismeretlen címekkel levelezett"
+
+-- 4. KAPCSOLATOK ELEMZÉSE:
+-- - Nagy Mária ellenség (3/10 bizalom)
+-- - Varga László gyanakszik (3/10 bizalom)
+-- - Papp Ildikó gyanakszik (4/10 bizalom)
+-- - Összesen 3 ember tartja gyanúsnak vagy ellenségnek
+
+-- 5. VISELKEDÉSI MINTÁK:
+-- - Titokzatos telefonhívások
+-- - Ismeretlen címekkel való levelezés
+-- - Gyanús viselkedés az utóbbi hetekben
+-- - Hozzáférés minden rendszerhez
+
+-- SQL lekérdezés a bizonyítékokhoz:
+SELECT 
+    'HORVÁTH GÁBOR' AS gyilkos,
+    'Ügyvezető - teljes hozzáférés' AS motívum,
+    4 AS védelem_hitelessége,
+    8 AS vádak_átlag_hitelessége,
+    3 AS gyanúsítók_száma,
+    'Manipulatív, hataloméhes' AS személyiség,
+    'BŰNÖS!' AS verdikt;</div>
+            </div>
+        </div>
+
+        <div class="card">
             <h2>🔧 Hibaelhárítás</h2>
             
             <div class="step">
@@ -481,55 +347,11 @@ ORDER BY COUNT(mr.target_member_id) DESC, AVG(mr.trust_level) ASC;
             <div class="info">
                 <strong>📞 Támogatás:</strong> Ha problémába ütközöl, ellenőrizd a MySQL hibanaplót és győződj meg róla, hogy minden SQL utasítás sikeresen lefutott.
             </div>
-            <div class="vissza"><a href="index.html">Vissza a főoldalra</a></div>
+            <div class="vissza"><a href="index.html">vissza a főoldalra</a></div>
         </div>
     </div>
 
-    <script>
-        function copyToClipboard(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.textContent;
-            
-            navigator.clipboard.writeText(text).then(function() {
-                const btn = element.parentElement.querySelector('.copy-btn');
-                const originalText = btn.textContent;
-                btn.textContent = 'Másolva!';
-                btn.classList.add('copied');
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            }).catch(function(err) {    
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                const btn = element.parentElement.querySelector('.copy-btn');
-                const originalText = btn.textContent;
-                btn.textContent = 'Másolva!';
-                btn.classList.add('copied');
-                
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.classList.remove('copied');
-                }, 2000);
-            });
-        }
-
-        function downloadSQL() {
-            const sqlContent = document.getElementById('sql-code').textContent;
-            const element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(sqlContent));
-            element.setAttribute('download', 'detective_game_database.sql');
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
-        }
-    </script>
+    <script src="kod.js"></script>
 </body>
 </html>
+
