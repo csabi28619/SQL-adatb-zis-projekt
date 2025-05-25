@@ -1,32 +1,35 @@
--- 1. Kik ellen hangzottak el vádak vagy gyanúsítások?
-SELECT 
-    gm.name AS 'Gyanúsított',
-    COUNT(*) AS 'Vádak száma',
-    AVG(i.credibility_score) AS 'Átlagos hitelesség'
+-- 1. Milyen vádak vagy gyanúsítások hangzottak el?
+SELECT DISTINCT 
+    gm.name AS 'Kikérdezett neve',
+    d.name AS 'Detektív neve',
+    i.statement AS 'Állítás',
+    i.statement_type AS 'Állítás típusa',
+    i.credibility_score AS 'Hitelesség (1-10)',
+    i.interrogation_date AS 'Kikérdezés dátuma'
 FROM interrogations i
-JOIN group_members gm ON gm.name LIKE CONCAT('%', SUBSTRING_INDEX(SUBSTRING_INDEX(i.statement, ' ', 2), ' ', -1), '%')
+JOIN group_members gm ON i.member_id = gm.id
+JOIN detectives d ON i.detective_id = d.id
 WHERE i.statement_type IN ('accusation', 'suspicion')
-GROUP BY gm.name
-ORDER BY COUNT(*) DESC, AVG(i.credibility_score) DESC;
+ORDER BY gm.name, i.interrogation_date;
 
--- 2. Ki a leggyanakvóbb a hozzáférések és pénzügyi helyzet alapján?
+-- 2. Ki a leggyanúsabb a hozzáféréseik és pénzügyi helyzetük alapján?
 SELECT 
-    name,
-    has_access_to_secrets,
-    financial_status,
-    personality_trait,
+    name AS 'Név',
+    occupation AS 'Beosztás',
+    has_access_to_secrets AS 'Titkokhoz hozzáférés',
+    financial_status AS 'Pénzügyi helyzet',
+    years_in_group AS 'Évek a csoportban',
+    personality_trait AS 'Személyiségjegy',
     CASE 
-        WHEN has_access_to_secrets = TRUE AND financial_status = 'poor' THEN 'MAGAS KOCKÁZAT'
-        WHEN has_access_to_secrets = TRUE AND personality_trait IN ('manipulatív', 'titokzatos', 'számító') THEN 'KÖZEPES KOCKÁZAT'
-        ELSE 'ALACSONY KOCKÁZAT'
-    END AS kockázati_szint
+        WHEN has_access_to_secrets = TRUE AND financial_status = 'poor' THEN 'NAGYON GYANÚS'
+        WHEN has_access_to_secrets = TRUE AND financial_status = 'middle' THEN 'GYANÚS'
+        WHEN has_access_to_secrets = TRUE AND financial_status = 'wealthy' THEN 'KÖZEPESEN GYANÚS'
+        ELSE 'KEVÉSBÉ GYANÚS'
+    END AS 'Gyanú szint'
 FROM group_members
 ORDER BY 
-    CASE 
-        WHEN has_access_to_secrets = TRUE AND financial_status = 'poor' THEN 1
-        WHEN has_access_to_secrets = TRUE AND personality_trait IN ('manipulatív', 'titokzatos', 'számító') THEN 2
-        ELSE 3
-    END;
+    has_access_to_secrets DESC,
+    FIELD(financial_status, 'poor', 'middle', 'wealthy');
 
 -- 3. Ellentmondások keresése az alibikben
 SELECT 

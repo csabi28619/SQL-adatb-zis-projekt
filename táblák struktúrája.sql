@@ -1,12 +1,12 @@
 --adatbázis létrehozása
 CREATE DATABASE detectiveGame DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 
--- Csoport tagjai
+--tagok
 CREATE TABLE group_members (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     age INT,
-    height INT, -- cm-ben
+    height INT,
     hair_color VARCHAR(50),
     eye_color VARCHAR(50),
     occupation VARCHAR(100),
@@ -17,7 +17,7 @@ CREATE TABLE group_members (
     personality_trait VARCHAR(100)
 );
 
--- Detektívek
+-- detektívek
 CREATE TABLE detectives (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE detectives (
     agency VARCHAR(100)
 );
 
--- Kikérdezések/Állítások
+-- kikérdezések/állítások
 CREATE TABLE interrogations (
     id INT PRIMARY KEY AUTO_INCREMENT,
     detective_id INT,
@@ -41,7 +41,7 @@ CREATE TABLE interrogations (
     FOREIGN KEY (member_id) REFERENCES group_members(id)
 );
 
--- Tagok közötti kapcsolatok/állítások
+-- tagok között lévő kapcsolatok
 CREATE TABLE member_relationships (
     id INT PRIMARY KEY AUTO_INCREMENT,
     member_id INT,

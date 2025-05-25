@@ -1,4 +1,4 @@
--- Csoport tagjai
+-- tagok
 INSERT INTO group_members (name, age, height, hair_color, eye_color, occupation, years_in_group, hometown, has_access_to_secrets, financial_status, personality_trait) VALUES
 ('Kovács János', 35, 180, 'barna', 'kék', 'könyvelő', 5, 'Budapest', TRUE, 'middle', 'introvertált'),
 ('Nagy Mária', 28, 165, 'szőke', 'zöld', 'marketing szakértő', 3, 'Debrecen', TRUE, 'wealthy', 'ambiciózus'),
@@ -13,14 +13,14 @@ INSERT INTO group_members (name, age, height, hair_color, eye_color, occupation,
 ('Németh Róbert', 41, 177, 'barna', 'kék', 'értékesítési vezető', 6, 'Eger', TRUE, 'wealthy', 'karizmatikus'),
 ('Papp Ildikó', 30, 163, 'vörös', 'zöld', 'kommunikációs vezető', 5, 'Sopron', FALSE, 'middle', 'kreatív');
 
--- Detektívek
+-- detektívek
 INSERT INTO detectives (name, years_experience, birth_year, specialization, success_rate, agency) VALUES
 ('Sherlock Holmes', 25, 1970, 'logikai következtetés', 95.50, 'Baker Street Detectives'),
 ('Hercule Poirot', 30, 1965, 'pszichológiai profil', 92.30, 'Orient Express Investigation'),
 ('Miss Marple', 20, 1975, 'emberi természet', 88.70, 'Village Mysteries Ltd'),
 ('Columbo', 35, 1960, 'részletek megfigyelése', 91.20, 'LAPD Consulting');
 
--- Kikérdezések/Állítások
+-- kikérdezések/állítások
 INSERT INTO interrogations (detective_id, member_id, statement, statement_type, credibility_score, interrogation_date) VALUES
 -- Sherlock Holmes kikérdezései
 (1, 1, 'Pénteken este 8-kor még az irodában voltam, a könyvelést fejeztem be. Szabó Péter is ott volt.', 'alibi', 8, '2024-01-15'),
@@ -46,7 +46,7 @@ INSERT INTO interrogations (detective_id, member_id, statement, statement_type, 
 (4, 7, 'A múlt héten láttam Molnár Zsuzsannát egy ismeretlen férfival beszélgetni a parkolóban.', 'suspicion', 6, '2024-01-18'),
 (4, 8, 'Az a férfi egy régi üzleti partner volt, semmi gyanús nem volt a találkozóban.', 'defense', 5, '2024-01-18');
 
--- Tagok közötti kapcsolatok
+-- tagok közötti kapcsolatok
 INSERT INTO member_relationships (member_id, target_member_id, relationship_type, trust_level) VALUES
 (1, 3, 'friend', 8),
 (2, 7, 'enemy', 3),
