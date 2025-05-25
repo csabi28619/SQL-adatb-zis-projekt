@@ -1,3 +1,6 @@
+--adatbázis létrehozása
+CREATE DATABASE detectiveGame DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+
 -- Csoport tagjai
 CREATE TABLE group_members (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,7 +24,7 @@ CREATE TABLE detectives (
     years_experience INT,
     birth_year INT,
     specialization VARCHAR(100),
-    success_rate DECIMAL(5,2), -- százalékban
+    success_rate DECIMAL(5,2),
     agency VARCHAR(100)
 );
 
