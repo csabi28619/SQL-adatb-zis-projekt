@@ -10,3 +10,15 @@ body{
     width: 100%;
     overflow-x: hidden;
 }
+.nav{
+    background-color: rgb(30, 30, 74);
+    height: 10vh;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+        >a{
+            color: white;
+            text-decoration: none;
+            font-family: 'Times New Roman', Times, serif;
+            margin-left: 3vh;
+        }
+}
