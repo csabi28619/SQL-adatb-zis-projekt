@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const text = description.textContent;
         const formattedText = text.replace(/([.!?])\s*([A-ZÁÉÍÓÖŐÚÜŰ])/g, '$1\n\n$2');
         description.textContent = formattedText;
-    }, 6500);
+    }, 7000);
     
     const contentWrapper = document.querySelector('.content-wrapper');
     
