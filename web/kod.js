@@ -68,20 +68,6 @@ function copyToClipboard(elementId) {
         `;
         document.head.appendChild(style);
 
-        // Ctrl+Shift+S hogy előhozd a megoldást, mi az értelme? semmi csak jól néz ki.
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.shiftKey && e.key === 'S') {
-                const overlay = document.getElementById('spoiler-overlay');
-                if (!overlay.classList.contains('hidden')) {
-                    const confirmed = confirm('Billentyűparancs észlelve! Biztosan meg akarod nézni a megoldást?');
-                    if (confirmed) {
-                        revealSolution();
-                    }
-                }
-            }
-        });
-
-
         document.getElementById('spoiler-overlay').addEventListener('contextmenu', function(e) {
             e.preventDefault();
             alert('🕵️ Okos próbálkozás, de a megoldást csak a gombbal lehet felfedni! 😉');

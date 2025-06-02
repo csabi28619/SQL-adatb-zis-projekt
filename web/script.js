@@ -1,4 +1,3 @@
-// Navigációs linkek sima görgetése
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Fejléc háttérváltásosságos görgetésre
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', function() {
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Csapattag kártyáinak interakciós bigyuszai
     const teamMembers = document.querySelectorAll('.team-member');
     
     teamMembers.forEach(member => {
@@ -45,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Nyomozó kártyák interakciói
     const detectives = document.querySelectorAll('.detective');
     
     detectives.forEach(detective => {
@@ -60,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Cégstatisztikák animált számlálója
     const stats = document.querySelectorAll('.stat h3');
     let hasAnimated = false;
 
@@ -105,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(statsSection);
     }
 
-    // Idővonal animáció
     const timelineItems = document.querySelectorAll('.timeline-item');
     
     const timelineObserver = new IntersectionObserver((entries) => {
@@ -124,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
         timelineObserver.observe(item);
     });
 
-    // Titkos nyomozási mód (Easter egg)
     let secretSequence = [];
     const secretCode = ['i', 'n', 'v', 'e', 's', 't', 'i', 'g', 'a', 't', 'e'];
     
@@ -144,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function activateInvestigationMode() {
         document.body.style.filter = 'sepia(20%) contrast(120%)';
         
-        // Nyomozási átfedés hozzáadása
         const overlay = document.createElement('div');
         overlay.innerHTML = `
             <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
@@ -158,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.body.appendChild(overlay);
         
-        // Gyanús csapattagokat piros kerettel jelzi
         const suspiciousMembers = document.querySelectorAll('.team-member.executive, .team-member.finance, .team-member.it');
         suspiciousMembers.forEach(member => {
             member.style.border = '3px solid #ff0000';
@@ -178,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Dinamikus gépelés effekt (az univerzum legjobb dolga)
     const heroText = document.querySelector('.hero-content p');
     if (heroText) {
         const originalText = heroText.textContent;
@@ -196,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 1000);
     }
 
-    // Random nyomozási felugró cuccok
     const investigationUpdates = [
         "🔍 Új bizonyíték található...",
         "📊 Pénzügyi adatok elemzése folyamatban...",
@@ -233,7 +222,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    // Véletlenszerű frissítések 30 másodpercenként
     setInterval(showRandomUpdate, 30000);
 
 
